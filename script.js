@@ -1,3 +1,4 @@
+/* ===== کره تعاملی ===== */
 const sphere = document.querySelector('.sphere');
 let targetX = 0, targetY = 0;
 let currentX = 5, currentY = 5; 
@@ -15,6 +16,7 @@ function animateSphere() {
 }
 animateSphere();
 
+/* ===== بک‌گراند ذرات ===== */
 const canvas = document.getElementById('particle-canvas');
 const ctx = canvas.getContext('2d');
 let particles = [];
@@ -67,6 +69,24 @@ function initParticles() {
 
 function animateParticles() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // خطوط بین ذرات نزدیک
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i+1; j < particles.length; j++) {
+      let dx = particles[i].x - particles[j].x;
+      let dy = particles[i].y - particles[j].y;
+      let dist = Math.sqrt(dx*dx + dy*dy);
+      if(dist < 120){
+        ctx.strokeStyle = 'rgba(0,240,255,0.2)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+
   particles.forEach(p => { p.update(); p.draw(); });
   requestAnimationFrame(animateParticles);
 }

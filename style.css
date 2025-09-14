@@ -39,12 +39,19 @@ header .logo {
   margin: -5rem auto 5px auto;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   animation: pulse 2s infinite;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+header .logo:hover {
+  transform: scale(1.2);
+  background: linear-gradient(135deg, #00f0ff, #6a11cb);
 }
 
 header h1 {
   font-size: 3rem;
   font-weight: 600;
   text-shadow: 0 0 15px var(--neon), 0 0 30px var(--neon), 0 0 50px var(--neon);
+  animation: flicker 2s infinite alternate;
 }
 
 header p {
@@ -59,13 +66,18 @@ header p {
   50% { transform: scale(1.1); }
 }
 
+@keyframes flicker {
+  0%, 100% { text-shadow: 0 0 15px var(--neon), 0 0 30px var(--neon); }
+  50% { text-shadow: 0 0 20px var(--neon), 0 0 40px var(--neon); }
+}
+
 /* ===== پروژه‌ها (Grid) ===== */
 .projects {
   display: grid;
   gap: 35px;
   padding: 60px 20px;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  justify-content: center; /* وسط چین کردن گرید */
+  justify-content: center;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -85,13 +97,11 @@ header p {
   color: white;
   position: relative;
   min-height: 120px;
-  max-width: 300px; 
+  max-width: 300px;
   width: 100%;
-  margin: 0 auto; /* اضافه شد: کارت وسط سلول */
-  box-sizing: border-box;
+  margin: 0 auto;
 }
 
-/* Tooltip */
 .card::after {
   content: attr(data-tooltip);
   position: absolute;
@@ -136,6 +146,7 @@ header p {
   border-radius: 50%;
   box-shadow: 0 0 60px var(--neon), 0 0 120px var(--neon), inset 0 0 60px var(--neon);
   will-change: transform; 
+  transition: background 0.5s ease;
 }
 
 @media (max-width: 768px) {
