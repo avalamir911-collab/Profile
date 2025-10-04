@@ -114,10 +114,10 @@ header p {
 @media (max-width: 768px) {
   .card{ padding: 25px; }
   header p{
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
   header h1{
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
 }
 
