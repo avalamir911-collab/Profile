@@ -1,21 +1,3 @@
-/* ===== کره تعاملی ===== */
-const sphere = document.querySelector('.sphere');
-let targetX = 0, targetY = 0;
-let currentX = 5, currentY = 5; 
-
-document.addEventListener('mousemove', e => {
-  targetX = (window.innerWidth / 2 - e.clientX) / 20;
-  targetY = (window.innerHeight / 2 - e.clientY) / 20;
-});
-
-function animateSphere() {
-  currentX += (targetX - currentX) * 0.1;
-  currentY += (targetY - currentY) * 0.1;
-  sphere.style.transform = `rotateX(${currentY}deg) rotateY(${currentX}deg)`;
-  requestAnimationFrame(animateSphere);
-}
-animateSphere();
-
 /* ===== بک‌گراند ذرات ===== */
 const canvas = document.getElementById('particle-canvas');
 const ctx = canvas.getContext('2d');

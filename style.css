@@ -17,34 +17,12 @@ body {
   overflow-x: hidden;
   color: #fff;
   background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+  direction: rtl;
 }
 
-/* ===== Header ===== */
 header {
   text-align: center;
-  padding: 120px 20px 60px 20px;
-}
-
-header .logo {
-  width: 65px;
-  height: 65px;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  color: white;
-  font-size: 37px;
-  margin: -5rem auto 5px auto;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  animation: pulse 2s infinite;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-header .logo:hover {
-  transform: scale(1.2);
-  background: linear-gradient(135deg, #00f0ff, #6a11cb);
+  padding: 40px 20px 30px 20px;
 }
 
 header h1 {
@@ -71,58 +49,42 @@ header p {
   50% { text-shadow: 0 0 20px var(--neon), 0 0 40px var(--neon); }
 }
 
-/* ===== پروژه‌ها (Grid) ===== */
 .projects {
   display: grid;
   gap: 35px;
   padding: 60px 20px;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   max-width: 1200px;
   margin: 0 auto;
+  direction: rtl;
+}
+
+@media (max-width: 1024px) {
+  .projects { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .projects { grid-template-columns: 1fr; }
 }
 
 .card {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  text-align: right;
   background: rgba(0,255,255,0.05);
-  padding: 45px;
+  padding: 30px 25px;
   border-radius: 25px;
   font-size: 1.4rem;
   cursor: pointer;
   transition: transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
   border: 1px solid rgba(0,255,255,0.3);
   color: white;
-  position: relative;
-  min-height: 120px;
-  max-width: 300px;
+  min-height: 150px;
+  max-width: 320px;
   width: 100%;
   margin: 0 auto;
-}
-
-.card::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: 120%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0,240,255,0.9);
-  color: #000;
-  padding: 6px 10px;
-  border-radius: 6px;
-  white-space: nowrap;
-  font-size: 0.9rem;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease, bottom 0.3s ease;
-  z-index: 10;
-}
-
-.card:hover::after {
-  opacity: 1;
-  bottom: 140%;
 }
 
 .card:hover {
@@ -131,35 +93,34 @@ header p {
   box-shadow: 0 0 30px var(--neon), 0 0 60px var(--neon), 0 0 90px var(--neon);
 }
 
-/* ===== کره تعاملی ===== */
-.interactive-sphere {
-  display: flex;
-  justify-content: center;
-  margin: 60px 0;
-  perspective: 1000px;
+.card p {
+  font-size: 0.95rem;
+  margin-top: 12px;
+  text-align: center;
+  text-shadow: 0 0 5px var(--neon);
+  line-height: 1.6;
 }
 
-.sphere {
-  width: 180px;
-  height: 180px;
-  background: radial-gradient(circle at 30% 30%, var(--neon), var(--bg1));
-  border-radius: 50%;
-  box-shadow: 0 0 60px var(--neon), 0 0 120px var(--neon), inset 0 0 60px var(--neon);
-  will-change: transform; 
-  transition: background 0.5s ease;
+.card .stack {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #fff;
+  display: inline-grid;
+  opacity: 0.9;
+  line-height: 1.4;
 }
 
 @media (max-width: 768px) {
-  .sphere {
-    width: 120px;
-    height: 120px;
+  .card{ padding: 25px; }
+  header p{
+    font-size: 1rem;
   }
-  .card{
-    padding: 25px;
+  header h1{
+    font-size: 2.4rem;
   }
 }
 
-/* ===== بک‌گراند ذرات ===== */
 #particle-canvas {
   position: fixed;
   top:0;
